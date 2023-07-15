@@ -14,12 +14,16 @@ mysql = MySQL(app)
 
 @app.route('/')
 def index():
-    return render_template('Fl.html')
+    return render_template('Flores.html')
 
 
 @app.route('/Flores.html')
-def Preguntas():
+def Flores():
     return render_template('Flores.html')
+
+@app.route('/Borrar.html')
+def Borrar():
+    return render_template('Borrar.html')
 
 @app.route('/Guardar', methods = ['POST'])
 def Guardar():
@@ -31,6 +35,17 @@ def Guardar():
         Ho.execute('insert into tbFlores(nombre, cantidad, precio) values (%s, %s, %s)',(VP1,VP2,VP3))
         mysql.connection.commit()
     return render_template(url_for('Flores'))
+
+@app.route('/Eliminar', methods = ['POST'])
+def Eliminar():
+    if request.method == 'POST':
+        VP1 = request.form['Pregunta1']
+        VP3 = request.form['Pregunta3']
+        Ho = mysql.connection.cursor()
+        Ho.execute('DELETE FROM tbFlores WHERE nombre = %s AND precio = %s', (VP1, VP3))
+        mysql.connection.commit()
+    return render_template(url_for('Borrar'))
+
 
 
 

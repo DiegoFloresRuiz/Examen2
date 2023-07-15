@@ -7,9 +7,12 @@
 </head>
 <body>
     <div class="Formulario">
-        <h1> Flores </h1>   
+        <h1> Flores </h1>  
+        <form action="">
+            <a href="{{ url_for('Borrar') }}"><button type="button">Eliminar</button></a> 
+        </form> 
         <form action="/Guardar" method="POST">
-            <div class="username">
+            <div class="username"> 
                 <input type="text" name="Pregunta1" required>
                 <label>Nombre</label>
             </div>
@@ -26,5 +29,29 @@
                 <button type="reset"> Cancelar </button>
             </div>
         </form>
+        <center>
+            <table border="1">
+                <thead>
+                  <tr>
+                    <td>ID:</td>
+                    <td>Nombre:</td>
+                    <td>Cantidad:</td>
+                    <td>Precio:</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for flo in listFlo %}
+                  <tr>
+                    <td>{{ alb.0 }}</td>
+                    <td>{{ alb.1 }}</td>
+                    <td>{{ alb.2 }}</td>
+                    <td>{{ alb.3 }}</td>
+                    <td>
+                    </td>
+                  </tr>
+                  {%endfor%}
+                </tbody>
+              </table>
+            </center>
 </body>
 </html>
