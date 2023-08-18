@@ -34,6 +34,7 @@ def Guardar():
         Ho = mysql.connection.cursor()
         Ho.execute('insert into tbFlores(nombre, cantidad, precio) values (%s, %s, %s)',(VP1,VP2,VP3))
         mysql.connection.commit()
+        
     return render_template(url_for('Flores'))
 
 @app.route('/Eliminar', methods = ['POST'])
